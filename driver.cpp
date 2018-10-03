@@ -30,21 +30,23 @@ void test6() {
 void (*pTests[])() = { test0,test1,test2,test3,test4,test5,test6 };
 
 void test_all() {
-	for (size_t i = 0; i<sizeof(pTests)/sizeof(pTests[0])-1; ++i) 
+	for (size_t i = 0; i<sizeof(pTests)/sizeof(pTests[0]); ++i) 
 		pTests[i]();
 }
 
 #include <cstdio>   //sscanf
 int main (int argc, char ** argv) {
-	if (argc >1) {
-		int test = 0;
-		std::sscanf(argv[1],"%i",&test);
-		try {
-            pTests[test]();
-		} catch( const char* msg) {
-			std::cerr << msg << std::endl;
-		}
-	}
+	//if (argc >1) {
+	//	int test = 0;
+	//	std::sscanf(argv[1],"%i",&test);
+	//	try {
+  //          pTests[test]();
+	//	} catch( const char* msg) {
+	//		std::cerr << msg << std::endl;
+	//	}
+	//}
+  test_all();
+  std::cin.ignore();
 	return 0;
 }
 // (3-6*(0-1)/2)-(2*7-7*8) - problem

@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 
 int         Evaluate( std::string const& postfix );
