@@ -1,4 +1,5 @@
 #include "infix2postfix.h"
+#include <cassert>
 
 int Evaluate(std::string const & postfix)
 {
@@ -14,19 +15,23 @@ int Evaluate(std::string const & postfix)
     //  push the result of the arithmetic
     if (token == '+')
     {
-      stack[--stackwalker - 1] = stack[stackwalker - 1] + stack[stackwalker];
+      --stackwalker;
+      stack[stackwalker - 1] = stack[stackwalker - 1] + stack[stackwalker];
     }
     else if (token == '-')
     {
-      stack[--stackwalker - 1] = stack[stackwalker - 1] - stack[stackwalker];
+      --stackwalker;
+      stack[stackwalker - 1] = stack[stackwalker - 1] - stack[stackwalker];
     }
     else if (token == '*')
     {
-      stack[--stackwalker - 1] = stack[stackwalker - 1] * stack[stackwalker];
+      --stackwalker;
+      stack[stackwalker - 1] = stack[stackwalker - 1] * stack[stackwalker];
     }
     else if (token == '/')
     {
-      stack[--stackwalker - 1] = stack[stackwalker - 1] / stack[stackwalker];
+      --stackwalker;
+      stack[stackwalker - 1] = stack[stackwalker - 1] / stack[stackwalker];
     }
     //When we see an operand, we push it on the stack
     else if ('0' <= token && token <= '9')
